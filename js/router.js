@@ -8,7 +8,9 @@ define([ 'backbone' ], function(Backbone) {
             'docs': 'documentation',
             'docs/:id': 'doc_view',
             'theft': 'theft_report',
-            'georeport': 'geo_report'
+            'georeport': 'geo_report',
+            'map': 'map',
+            'map/:area_number': 'map_zoom'
         }
     });
     return Router;

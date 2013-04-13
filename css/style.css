@@ -80,6 +80,25 @@ img {
     max-width: 500px;
 }
 
+.map-feature {
+  fill: #ccc;
+}
+
+.map-mesh {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+  stroke-linejoin: round;
+}
+
+.map-selected {
+  fill: #ddd;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+
 @media all and (max-width:979px) {
     body { padding-top: 0; }
 }
+

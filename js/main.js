@@ -18,7 +18,8 @@ require.config({
         templates: '../templates',
         text: '../lib/text',
         underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore',
-        async: '../lib/async'
+        async: '../lib/async',
+        topojson: 'http://d3js.org/topojson.v0.min'
     },
     shim: {
         backbone: {
@@ -36,6 +37,12 @@ require.config({
         },
         underscore: {
             exports: '_'
+        },
+        d3: {
+            exports: 'd3'
+        },
+        topojson: {
+            exports: 'topojson'
         }
     }
 });

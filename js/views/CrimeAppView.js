@@ -7,10 +7,11 @@ define([
     'views/DocListView','views/DocDetailView',
     'views/CommunityAreaMonthlySummary', 
     'views/TheftReportView',
-    'views/GeoReportView'
+    'views/GeoReportView',
+    'views/MapView'
 ], function($, Backbone, PageView, CommunityAreaListView, 
             CommunityAreaDetailView, DocListView, DocDetailView, 
-            CommunityAreaMonthlySummary, TheftReportView, GeoReportView) {
+            CommunityAreaMonthlySummary, TheftReportView, GeoReportView, MapView) {
 
     var CrimeAppView = Backbone.View.extend({
         id: 'content',
@@ -66,6 +67,15 @@ define([
             this.router.on('route:geo_report', function() {
                 app.swap_view(GeoReportView);
             });
+
+            this.router.on('route:map', function() {
+                app.swap_view(MapView);
+            });
+
+            this.router.on('route:map_zoom', function(area_number) {
+                console.log('CHICAGO CRIME [js/views/CrimeAppView.js]: zoomin. ' + area_number);
+                app.swap_view(MapView,{area_number: area_number})
+            })
         }
     });
 
