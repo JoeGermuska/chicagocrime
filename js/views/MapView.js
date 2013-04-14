@@ -37,6 +37,7 @@ define([
 
         render: function(context) {
             var view = this;
+            window.mapview = view;
             if (d3) {
                 d3.json(view.datafile, _.bind(function(error, topojson_data) {
 
@@ -52,10 +53,25 @@ define([
                       .scale(st.scale)
                       .translate(st.translate);
 
-                  this.svg.append("path")
-                      .datum(this.polys)
+                  // this.svg.append("path")
+                  //     .datum(this.polys)
+                  //     .attr("class", "map-feature")
+                  //     .attr("d", this.path);
+                  // 
+                  g = this.svg.append("g");
+                  
+                  g.selectAll("path")
+                      .data(this.polys.geometries)
+                      .enter().append("path")
+                      .attr("d", this.path)
                       .attr("class", "map-feature")
-                      .attr("d", this.path);
+                      .on("click", function(d) { 
+                          console.log('clicked'); 
+                          console.log(d.properties); 
+                        console.log("area " + d.properties.AREA_NUMBE); 
+                        console.log("area " + d.properties.COMMUNITY); 
+                    });
+
 
                   this.svg.append("path") // boundary lines
                       .datum(TopoJson.mesh(topojson_data, this.topo_polys, function(a, b) { return a !== b; }))
